@@ -1,0 +1,28 @@
+<?php
+    $this->widget('zii.widgets.grid.CGridView', array(
+    'id'=>'files-grid',
+    'dataProvider'=>$model->search(),
+    'filter'=>$model,
+    'columns'=>array(
+        array('name'=>'id',
+            'htmlOptions' => array('width' => '10px'),
+        ),
+        array('name' => 'path',
+            'type'=>'html',
+            'value'=>'CHtml::link($data->path,"/site/sendfile/".$data->id)',
+            'header'=>'Файли архива',
+        ),
+        array('name' => 'date',
+            "type" => "raw",
+            'value'=> 'date("Y-m-d H:i:s",$data->date)',
+            'htmlOptions' => array('width' => '120px'),
+            'header'=>'Дата',
+        ),
+        array('name'=>'post_id',
+            'htmlOptions' => array('width' => '10px'),
+            "type" => "html",
+            'value'=> 'CHtml::link($data->post_id,"index/".$data->post_id)',
+            'header'=>'Страница архива',
+            ),
+    ),
+)); ?>
